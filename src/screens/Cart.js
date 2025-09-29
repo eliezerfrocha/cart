@@ -8,24 +8,28 @@ export const Cart = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.image} style={styles.image} resizeMode="cover" />
-      <View style={styles.infoSection}>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.price}>{numberFormat(item.price)}</Text>
+      <View style={styles.cardRow}>
+        <Image source={item.image} style={styles.image} resizeMode="cover" />
+        <View style={styles.cardContent}>
+          <View style={styles.infoSection}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.name}>{item.name}</Text>
+              <Text style={styles.price}>{numberFormat(item.price)}</Text>
+            </View>
+            <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeBtn}>
+              <Text style={styles.removeBtnText}>×</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.qtyRow}>
+            <TouchableOpacity style={styles.qtyBtn} onPress={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}>
+              <Text style={styles.qtyBtnText}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.qty}>{item.quantity}</Text>
+            <TouchableOpacity style={styles.qtyBtn} onPress={() => updateQuantity(item.id, item.quantity + 1)}>
+              <Text style={styles.qtyBtnText}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeBtn}>
-          <Text style={styles.removeBtnText}>×</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.qtyRow}>
-        <TouchableOpacity style={styles.qtyBtn} onPress={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}>
-          <Text style={styles.qtyBtnText}>-</Text>
-        </TouchableOpacity>
-        <Text style={styles.qty}>{item.quantity}</Text>
-        <TouchableOpacity style={styles.qtyBtn} onPress={() => updateQuantity(item.id, item.quantity + 1)}>
-          <Text style={styles.qtyBtnText}>+</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -59,23 +63,33 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f6fa',
   },
   card: {
-    flexDirection: 'column',
     backgroundColor: '#fff',
-    borderRadius: 16,
+    borderRadius: 18,
     shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
-    marginBottom: 18,
-    padding: 12,
+    shadowOpacity: 0.10,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
+    marginBottom: 20,
+    padding: 0,
+    overflow: 'hidden',
+  },
+  cardRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   image: {
-    width: '100%',
-    height: 120,
-    borderRadius: 12,
-    marginBottom: 8,
+    width: 100,
+    height: 100,
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
     backgroundColor: '#eee',
+    marginRight: 12,
+  },
+  cardContent: {
+    flex: 1,
+    padding: 12,
+    justifyContent: 'center',
   },
   infoSection: {
     flexDirection: 'row',
@@ -86,80 +100,92 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 2,
+    color: '#222',
   },
   price: {
     fontSize: 16,
     color: '#007acc',
     marginBottom: 2,
+    fontWeight: '600',
   },
   removeBtn: {
     marginLeft: 8,
     backgroundColor: '#ff6b6b',
     borderRadius: 16,
-    width: 28,
-    height: 28,
+    width: 32,
+    height: 32,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#ff6b6b',
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   removeBtnText: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    lineHeight: 22,
+    lineHeight: 24,
   },
   qtyRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    marginTop: 4,
+    marginTop: 2,
   },
   qtyBtn: {
-    backgroundColor: '#eee',
+    backgroundColor: '#e0e7ef',
     borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
+    paddingHorizontal: 14,
+    paddingVertical: 6,
     marginHorizontal: 4,
+    minWidth: 36,
+    alignItems: 'center',
   },
   qtyBtnText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#007acc',
   },
   qty: {
-    fontSize: 16,
+    fontSize: 17,
     marginHorizontal: 8,
-    minWidth: 24,
+    minWidth: 28,
     textAlign: 'center',
+    color: '#222',
+    fontWeight: '600',
   },
   totalBox: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
     backgroundColor: '#fffbe6',
-    borderRadius: 12,
-    padding: 16,
-    marginTop: 8,
+    borderRadius: 16,
+    padding: 20,
+    marginTop: 12,
     shadowColor: '#f5d06f',
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 1,
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 2,
   },
   totalLabel: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginRight: 8,
+    fontSize: 20,
+    fontWeight: '700',
+    marginRight: 10,
     color: '#b8860b',
   },
   total: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: 'bold',
     color: '#b8860b',
   },
   empty: {
-    fontSize: 18,
+    fontSize: 19,
     textAlign: 'center',
-    marginTop: 32,
-    color: '#888',
+    marginTop: 40,
+    color: '#aaa',
+    fontWeight: '500',
   },
 });
