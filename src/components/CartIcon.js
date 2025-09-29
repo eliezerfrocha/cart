@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
+import { useCart } from "../services/cartContext";
 
-export const CartIcon = ({ navigation, getItemsCount }) => {
+export const CartIcon = ({ navigation }) => {
+  const { getItemsCount } = useCart();
   const quantidade = getItemsCount();
   return (
     <View style={styles.container}>
