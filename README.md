@@ -1,50 +1,36 @@
 # Projeto Carrinho de Compras (React Native + Expo)
 
-Este projeto implementa um app de catálogo de produtos com carrinho de compras, desenvolvido em React Native utilizando Expo.
+Aplicativo de catálogo de produtos com carrinho de compras, desenvolvido em **React Native** utilizando **Expo**.  
 
-## O que foi feito
+## Funcionalidades
 
-- **Estrutura inicial:**
-  - Criação do projeto Expo e estruturação de pastas para componentes, telas e serviços.
-- **Listagem de produtos:**
-  - Implementação da tela de listagem de produtos, consumindo dados simulados.
-- **Detalhes do produto:**
-  - Tela de detalhes com informações completas e botão de compra.
-- **Carrinho de compras:**
-  - Criação de contexto global para gerenciar o estado do carrinho (adicionar, remover, alterar quantidade).
-  - Tela de carrinho mostrando produtos, quantidades, total e botões para ajuste.
-- **Melhorias visuais:**
-  - Layout aprimorado com cards, imagens, botões estilizados e feedback visual ao adicionar ao carrinho.
-- **Feedback ao usuário:**
+- **Estrutura inicial**
+  - Projeto criado com Expo e organização em pastas para componentes, telas e serviços.
+- **Listagem de produtos**
+  - Tela de listagem consumindo dados simulados.
+- **Detalhes do produto**
+  - Tela com informações completas e botão de compra.
+- **Carrinho de compras**
+  - Contexto global para gerenciar o estado do carrinho (adicionar, remover, alterar quantidade).
+  - Tela exibindo produtos, quantidades, total e botões de ajuste.
+- **Interface aprimorada**
+  - Layout com cards, imagens e botões estilizados.
+  - Feedback visual ao adicionar itens ao carrinho.
+- **Experiência do usuário**
   - Botão de compra com loading e mensagem animada de sucesso, inspirado em grandes e-commerces.
 
-## Processo de desenvolvimento (simulado)
+## Histórico de desenvolvimento
 
-- Commit inicial: Estruturação do projeto e criação das primeiras telas.
-- Commit: Implementação da listagem de produtos e navegação.
-- Commit: Tela de detalhes do produto e integração do botão de compra.
-- Commit: Criação do contexto do carrinho e integração com as telas.
-- Commit: Layout do carrinho com cards, imagens e botões de quantidade.
-- Commit: Feedback visual no botão de compra (loading e mensagem de sucesso).
-- Commit: Ajustes finais e revisão do código.
-
-## Observações
-
-- O uso de IA foi feito apenas para esclarecer dúvidas conceituais e buscar referências de boas práticas de UI/UX.
-- Todas as decisões de implementação e lógica foram realizadas manualmente para garantir o aprendizado.
+- Estruturação inicial do projeto e primeiras telas.  
+- Implementação da listagem de produtos e navegação.  
+- Tela de detalhes do produto com botão de compra.  
+- Criação do contexto global de carrinho e integração com as telas.  
+- Layout do carrinho com cards, imagens e botões de quantidade.  
+- Feedback visual no botão de compra (loading e mensagem de sucesso).  
+- Ajustes finais e revisão geral.  
 
 ## Como rodar
 
 1. Instale as dependências:
-   ```
+   ```bash
    npm install
-   ```
-2. Inicie o projeto:
-   ```
-   npx expo start
-   ```
-3. Use o Expo Go no celular para escanear o QR code.
-
----
-
-Projeto para fins didáticos.
